@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -62,7 +63,7 @@
         <div class="max-w-7xl mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <img src="https://i.imgur.com/bode.png" alt="Lojinha do Bodinho" class="w-12 h-12 rounded-lg object-cover shadow-lg">
+                    <img src="https://i.postimg.cc/02kNzJr8/bode.png" alt="Lojinha do Bodinho" class="w-12 h-12 rounded-lg object-cover shadow-lg">
                     <span class="text-xl font-medium logo-text hidden sm:block">Lojinha do Bodinho</span>
                 </div>
 
@@ -279,7 +280,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                 <div>
                     <div class="flex items-center gap-3 mb-4">
-                        <img src="https://i.imgur.com/bode.png" alt="Lojinha do Bodinho" class="w-14 h-14 rounded-lg object-cover shadow-lg">
+                        <img src="https://i.postimg.cc/02kNzJr8/bode.png" alt="Lojinha do Bodinho" class="w-14 h-14 rounded-lg object-cover shadow-lg">
                         <span class="text-xl font-medium logo-text">Lojinha do Bodinho</span>
                     </div>
                     <p class="text-gray-400 text-sm">A melhor loja de mods para SA-MP. Conteúdo exclusivo e de qualidade.</p>
@@ -319,18 +320,18 @@
             boleto: { name: 'Boleto', icon: '🧾', description: 'Aprovação em 1-3 dias', color: 'bg-orange-600' }
         };
 
-        // PRODUTOS BASE - Seus produtos ficam salvos aqui no código
+        // PRODUTOS BASE COM IMAGENS CORRIGIDAS
         const baseProducts = [
             {
                 id: 1,
                 name: "Mod Menu Esp",
                 category: "Geral",
                 price: 0,
-                image: "https://i.imgur.com/Design-sem-nome.jpg",
+                image: "https://i.postimg.cc/gc3trjM6/Design-sem-nome.jpg",
                 rating: 4.8,
                 downloads: 57,
                 downloadLink: "https://www.mediafire.com/file/3vxvaizlrjn3imw/moonloader.rar/file",
-                description: "[b]Mod Menu Completo com ESP[/b]\n\n\n[color=red]ATENÇÃO:[/color] Use com responsabilidade!",
+                description: "[b]Mod Menu Completo com ESP[/b]\n\Tecla X abre o Menu \n\n[color=red]ATENÇÃO:[/color] Use com responsabilidade!",
                 paymentMethods: ["pix", "mercadopago", "picpay"]
             },
             {
@@ -338,11 +339,11 @@
                 name: "Menu Sensifix Traduzido",
                 category: "Geral",
                 price: 0,
-                image: "https://i.imgur.com/sa_mp_093.png",
+                image: "https://i.postimg.cc/WbGtLqp6/sa-mp-093.png",
                 rating: 5,
                 downloads: 0,
                 downloadLink: "https://drive.google.com/uc?export=download&id=1sMUceNrS4hUhQ1iROjCXzJHp5dGQ4O8S",
-                description: "Menu Sensifix completamente traduzido para português",
+                description: "Menu Sensifix completamente traduzido para português\,Use /sensa para abri-lo",
                 paymentMethods: ["pix"]
             },
             {
@@ -350,11 +351,11 @@
                 name: "Menu Keyboard Traduzido",
                 category: "Geral",
                 price: 0,
-                image: "https://i.imgur.com/sa_mp_091.png",
+                image: "https://i.postimg.cc/1Xg6rmDq/sa-mp-091.png",
                 rating: 5,
                 downloads: 0,
                 downloadLink: "https://drive.google.com/uc?export=download&id=1h3Oi8AvDsmRkGQIImrwCoFXefPaMbLaG",
-                description: "Menu Keyboard totalmente em português",
+                description: "Menu Keyboard totalmente em português\nUse /key ou /keyboard para abri-lo",
                 paymentMethods: ["pix"]
             },
             {
@@ -362,11 +363,11 @@
                 name: "Damage Informer Traduzido e Descompilado",
                 category: "Geral",
                 price: 0,
-                image: "https://i.imgur.com/sa_mp_086.png",
+                image: "https://i.postimg.cc/kMcXT3T1/sa-mp-086.png",
                 rating: 5,
                 downloads: 0,
                 downloadLink: "https://drive.google.com/uc?export=download&id=1H7rU840Peo_GXiJLKUQ2j8oan0Gas07W",
-                description: "Damage Informer traduzido e descompilado para edição",
+                description: "Damage Informer traduzido e descompilado para edição\nUse /dmg para abri-lo",
                 paymentMethods: ["pix"]
             }
         ];
@@ -376,7 +377,6 @@
         let nextProductId = 5;
         let editingProductId = null;
 
-        // Inicializar produtos (mescla base com localStorage)
         function initProducts() {
             const saved = JSON.parse(localStorage.getItem('bodinho_products')) || [];
             const merged = [...baseProducts];
