@@ -3,810 +3,1004 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lojinha do Bodinho - Seu Comércio Online</title>
+    <title>Lojinha do Bodinho - Mods SAMP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .payment-method {
+            transition: all 0.3s;
+        }
+        .payment-method:hover {
+            transform: translateY(-2px);
+        }
+        .payment-method.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .logo-text {
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+        .bbcode-content {
             line-height: 1.6;
-            color: #333;
         }
-
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
+        .bbcode-content b {
             font-weight: bold;
         }
-
-        nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
+        .bbcode-content i {
+            font-style: italic;
         }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-            cursor: pointer;
+        .bbcode-content u {
+            text-decoration: underline;
         }
-
-        nav a:hover {
-            opacity: 0.8;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 4rem 1rem;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.7rem 1.5rem;
-            background-color: #764ba2;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn:hover {
-            background-color: #667eea;
-        }
-
-        .btn-secondary {
-            background-color: #e74c3c;
-        }
-
-        .btn-secondary:hover {
-            background-color: #c0392b;
-        }
-
-        .btn-success {
-            background-color: #27ae60;
-        }
-
-        .btn-success:hover {
-            background-color: #229954;
-        }
-
-        .btn-warning {
-            background-color: #f39c12;
-        }
-
-        .btn-warning:hover {
-            background-color: #d68910;
-        }
-
-        .menu-section {
-            padding: 2rem 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .menu-title {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: #667eea;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .menu-card {
-            background: white;
-            border: 1px solid #ddd;
+        .bbcode-content img {
+            max-width: 100%;
             border-radius: 8px;
-            padding: 1.5rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
+            margin: 8px 0;
+        }
+        .bbcode-content a {
+            color: #eab308;
+            text-decoration: underline;
         }
 
-        .menu-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .menu-card h3 {
-            color: #667eea;
-            margin-bottom: 0.5rem;
-        }
-
-        .menu-card p {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .menu-card .btn {
-            display: block;
-            text-align: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .download-management {
-            background: #f8f9fa;
-            padding: 2rem;
+        /* Estilo do botão YouTube */
+        .button-youtube {
+            background-color: #FF0000; /* Cor do YouTube */
+            color: white;
+            padding: 8px 16px;
             border-radius: 8px;
-            margin-bottom: 2rem;
-        }
-
-        .download-management h2 {
-            color: #667eea;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .download-management h2::before {
-            content: "⚙️";
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
             font-weight: bold;
-            color: #333;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.7rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
-        }
-
-        .download-list {
-            margin-top: 2rem;
-        }
-
-        .download-item {
-            background: white;
-            border-left: 4px solid #667eea;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .download-item-info h4 {
-            color: #333;
-            margin-bottom: 0.3rem;
-        }
-
-        .download-item-info p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .download-item-actions {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .download-item-actions button {
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 2rem;
-            border: 1px solid #888;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 500px;
-        }
-
-        .modal-close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
+            text-transform: uppercase;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        .modal-close:hover {
-            color: black;
+        .button-youtube:hover {
+            background-color: #cc0000;
         }
 
-        .products-section {
-            margin-top: 2rem;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .product-card {
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* Garantir que o link da Lojinha do Bodinho esteja sublinhado */
+        .logo-text a {
+            text-decoration: underline;
             color: white;
-            font-size: 3rem;
-        }
-
-        .product-info {
-            padding: 1.5rem;
-        }
-
-        .product-info h3 {
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .product-price {
-            color: #667eea;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-
-        .success-message {
-            background: #d4edda;
-            color: #155724;
-            padding: 1rem;
-            border-radius: 5px;
-            margin-bottom: 1rem;
-            display: none;
-        }
-
-        .error-message {
-            background: #f8d7da;
-            color: #721c24;
-            padding: 1rem;
-            border-radius: 5px;
-            margin-bottom: 1rem;
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            nav {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            .download-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .download-item-actions {
-                width: 100%;
-            }
         }
     </style>
 </head>
-<body>
-    <header>
-        <div class="header-container">
-            <div class="logo">🛍️ Lojinha do Bodinho</div>
-            <nav>
-                <a onclick="showSection('home')">Home</a>
-                <a onclick="showSection('products')">Produtos</a>
-                <a onclick="showSection('downloads')">Gerenciar Downloads</a>
-                <a onclick="showSection('contact')">Contato</a>
-            </nav>
+<body class="min-h-screen bg-gray-950 text-white">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-gray-900 border-b border-gray-800 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+
+                <!-- Logo + Nome clicável -->
+                <div class="flex items-center gap-3">
+                    <img src="https://i.postimg.cc/02kNzJr8/bode.png" 
+                         alt="Lojinha do Bodinho" 
+                         class="w-12 h-12 rounded-lg object-cover shadow-lg">
+
+                    <!-- Nome clicável com sublinhado -->
+                    <a href="https://www.youtube.com/@astarothBR" 
+                       target="_blank"
+                       class="text-xl font-medium logo-text hidden sm:block underline">
+                        Lojinha do Bodinho
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-3 ml-auto">
+
+                    <button onclick="checkAdminAccess()" 
+                            class="p-2 hover:bg-gray-800 rounded-lg transition" 
+                            id="adminButton">
+                        ⚙️
+                    </button>
+
+                    <button onclick="toggleCart()" 
+                            class="relative p-2 hover:bg-gray-800 rounded-lg transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 
+                                  0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+
+                        <span id="cartBadge" 
+                              class="hidden absolute -top-1 -right-1 bg-yellow-500 text-black text-xs font-bold w-5 h-5 rounded-full items-center justify-center">
+                            0
+                        </span>
+                    </button>
+
+                    <button onclick="logout()" 
+                            id="logoutButton" 
+                            class="p-2 hover:bg-gray-800 rounded-lg transition text-red-400 hidden" 
+                            title="Sair">
+                        🚪
+                    </button>
+
+                    <!-- Botão YouTube -->
+                    <button onclick="window.open('https://www.youtube.com/@astarothBR', '_blank')" 
+                            class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-semibold">
+                        YouTube
+                    </button>
+
+                </div>
+            </div>
         </div>
     </header>
 
-    <section id="home" class="menu-section" style="padding-top: 3rem; border-bottom: none;">
-        <div class="hero">
-            <div class="container">
-                <h1>Bem-vindo à Lojinha do Bodinho</h1>
-                <p>Seu comércio online confiável com os melhores produtos e serviços</p>
-                <button class="btn" onclick="showSection('products')">Explorar Produtos</button>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 z-50 bg-black bg-opacity-70 flex items-center justify-center p-4 hidden">
+        <div class="bg-gray-900 rounded-xl max-w-md w-full p-6" onclick="event.stopPropagation()">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold">🔐 Login Admin</h2>
+                <button onclick="closeLoginModal()" class="p-2 hover:bg-gray-800 rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
             </div>
-        </div>
-    </section>
 
-    <section id="products" class="menu-section" style="display: none;">
-        <div class="container">
-            <h2 class="menu-title">Nossos Produtos</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-image">📱</div>
-                    <div class="product-info">
-                        <h3>Eletrônicos</h3>
-                        <p>Produtos eletrônicos de alta qualidade</p>
-                        <div class="product-price">R$ 99,90</div>
-                        <button class="btn">Comprar</button>
-                    </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-2">Usuário</label>
+                    <input type="text" id="loginUsername" class="w-full bg-gray-800 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Digite o usuário">
                 </div>
-
-                <div class="product-card">
-                    <div class="product-image">👕</div>
-                    <div class="product-info">
-                        <h3>Roupas</h3>
-                        <p>Coleção exclusiva de roupas</p>
-                        <div class="product-price">R$ 49,90</div>
-                        <button class="btn">Comprar</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">🎮</div>
-                    <div class="product-info">
-                        <h3>Games</h3>
-                        <p>Últimos lançamentos em games</p>
-                        <div class="product-price">R$ 199,90</div>
-                        <button class="btn">Comprar</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">📚</div>
-                    <div class="product-info">
-                        <h3>Livros</h3>
-                        <p>Seleção de livros variados</p>
-                        <div class="product-price">R$ 29,90</div>
-                        <button class="btn">Comprar</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">🎧</div>
-                    <div class="product-info">
-                        <h3>Acessórios</h3>
-                        <p>Acessórios tecnológicos</p>
-                        <div class="product-price">R$ 79,90</div>
-                        <button class="btn">Comprar</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">💻</div>
-                    <div class="product-info">
-                        <h3>Computadores</h3>
-                        <p>Máquinas de alta performance</p>
-                        <div class="product-price">R$ 2.999,90</div>
-                        <button class="btn">Comprar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="downloads" class="menu-section" style="display: none;">
-        <div class="container">
-            <h2 class="menu-title">Gerenciador de Downloads de Produtos</h2>
-            
-            <div class="download-management">
-                <h2>Adicionar/Editar Download</h2>
                 
-                <div class="success-message" id="successMessage"></div>
-                <div class="error-message" id="errorMessage"></div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">Senha</label>
+                    <input type="password" id="loginPassword" class="w-full bg-gray-800 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Digite a senha">
+                </div>
 
-                <form id="downloadForm" onsubmit="handleSubmitDownload(event)">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="productName">Nome do Produto *</label>
-                            <input type="text" id="productName" name="productName" required>
-                        </div>
+                <div id="loginError" class="hidden bg-red-900 bg-opacity-50 border border-red-500 text-red-200 px-4 py-3 rounded-lg text-sm">❌ Usuário ou senha incorretos!</div>
 
-                        <div class="form-group">
-                            <label for="productVersion">Versão *</label>
-                            <input type="text" id="productVersion" name="productVersion" placeholder="ex: 1.0.0" required>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="downloadUrl">URL de Download *</label>
-                            <input type="url" id="downloadUrl" name="downloadUrl" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="fileSize">Tamanho do Arquivo *</label>
-                            <input type="text" id="fileSize" name="fileSize" placeholder="ex: 50 MB" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="description">Descrição</label>
-                        <textarea id="description" name="description" placeholder="Descreva o produto..."></textarea>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="releaseDate">Data de Lançamento</label>
-                            <input type="date" id="releaseDate" name="releaseDate">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="category">Categoria</label>
-                            <select id="category" name="category">
-                                <option value="">Selecione uma categoria</option>
-                                <option value="software">Software</option>
-                                <option value="ebook">E-book</option>
-                                <option value="game">Game</option>
-                                <option value="plugin">Plugin</option>
-                                <option value="template">Template</option>
-                                <option value="outro">Outro</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="requirements">Requisitos do Sistema</label>
-                        <textarea id="requirements" name="requirements" placeholder="ex: Windows 10+, 4GB RAM..."></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-success" style="width: 100%; margin-top: 1rem;">Salvar Download</button>
-                    <button type="button" class="btn btn-secondary" style="width: 100%; margin-top: 0.5rem;" onclick="resetDownloadForm()">Cancelar</button>
-                </form>
+                <button onclick="attemptLogin()" class="w-full bg-yellow-500 text-black py-3 rounded-lg font-bold hover:bg-yellow-400 transition">
+                    Entrar
+                </button>
             </div>
-
-            <div class="download-list" id="downloadList">
-                <h3 style="color: #667eea; margin-bottom: 1rem;">Downloads Cadastrados</h3>
-                <div id="downloadsContainer">
-                    <p style="text-align: center; color: #999;">Nenhum download cadastrado ainda.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="menu-section" style="display: none;">
-        <div class="container">
-            <h2 class="menu-title">Entre em Contato</h2>
-            <div style="background: white; padding: 2rem; border-radius: 8px; max-width: 500px; margin: 0 auto;">
-                <form onsubmit="handleContactSubmit(event)">
-                    <div class="form-group">
-                        <label for="name">Nome *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Mensagem *</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-success" style="width: 100%;">Enviar Mensagem</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Lojinha do Bodinho. Todos os direitos reservados.</p>
-        <p>Desenvolvido com ❤️ para você</p>
-    </footer>
-
-    <div id="editModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeEditModal()">&times;</span>
-            <h2>Editar Download</h2>
-            <form id="editForm" onsubmit="handleEditSubmit(event)">
-                <div class="form-group">
-                    <label for="editProductName">Nome do Produto *</label>
-                    <input type="text" id="editProductName" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="editProductVersion">Versão *</label>
-                    <input type="text" id="editProductVersion" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="editDownloadUrl">URL de Download *</label>
-                    <input type="url" id="editDownloadUrl" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="editFileSize">Tamanho do Arquivo *</label>
-                    <input type="text" id="editFileSize" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="editDescription">Descrição</label>
-                    <textarea id="editDescription"></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-success" style="width: 100%; margin-bottom: 0.5rem;">Atualizar</button>
-                <button type="button" class="btn btn-secondary" style="width: 100%;" onclick="closeEditModal()">Cancelar</button>
-            </form>
         </div>
     </div>
 
+    <!-- Admin Panel -->
+    <div id="adminPanel" class="fixed inset-0 z-50 bg-black bg-opacity-70 overflow-y-auto hidden">
+        <div class="min-h-screen flex items-center justify-center p-4">
+            <div class="bg-gray-900 rounded-xl max-w-4xl w-full p-6" onclick="event.stopPropagation()">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold">⚙️ Painel de Administração</h2>
+                    <button onclick="toggleAdminPanel()" class="p-2 hover:bg-gray-800 rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="bg-gray-800 rounded-lg p-6 mb-4">
+                    <h3 class="font-bold text-lg mb-4">Criar Novo Produto</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Nome do Produto</label>
+                            <input type="text" id="newProductName" class="w-full bg-gray-700 rounded-lg px-4 py-2" placeholder="Ex: Mod Menu Esp">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Categoria</label>
+                            <input type="text" id="newProductCategory" class="w-full bg-gray-700 rounded-lg px-4 py-2" placeholder="Ex: Armas, Veículos">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Preço (0 = Grátis)</label>
+                            <input type="number" id="newProductPrice" class="w-full bg-gray-700 rounded-lg px-4 py-2" placeholder="0.00" step="0.01" min="0" value="0">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">URL da Imagem</label>
+                            <input type="text" id="newProductImage" class="w-full bg-gray-700 rounded-lg px-4 py-2" placeholder="https://...">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Link de Download</label>
+                            <input type="text" id="newProductDownload" class="w-full bg-gray-700 rounded-lg px-4 py-2" placeholder="https://...">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Avaliação (0-5)</label>
+                            <input type="number" id="newProductRating" class="w-full bg-gray-700 rounded-lg px-4 py-2" placeholder="4.5" step="0.1" min="0" max="5" value="5">
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <label class="block text-sm font-medium mb-2">Descrição (Suporta BBCode)</label>
+                        <textarea id="newProductDescription" class="w-full bg-gray-700 rounded-lg px-4 py-2 h-32" placeholder="[b]Texto em negrito[/b]
+[i]Texto em itálico[/i]
+[u]Texto sublinhado[/u]
+[color=red]Texto colorido[/color]
+[url=https://link.com]Link[/url]
+[img]https://imagem.jpg[/img]"></textarea>
+                        <p class="text-xs text-gray-400 mt-2">Suporta: [b], [i], [u], [color], [url], [img], [size]</p>
+                    </div>
+
+                    <div class="mt-4">
+                        <label class="block text-sm font-medium mb-2">Métodos de Pagamento</label>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                            <label class="flex items-center gap-2 bg-gray-700 p-2 rounded cursor-pointer">
+                                <input type="checkbox" class="payment-checkbox" value="pix">
+                                <span>🔑 PIX</span>
+                            </label>
+                            <label class="flex items-center gap-2 bg-gray-700 p-2 rounded cursor-pointer">
+                                <input type="checkbox" class="payment-checkbox" value="mercadopago">
+                                <span>💳 Mercado Pago</span>
+                            </label>
+                            <label class="flex items-center gap-2 bg-gray-700 p-2 rounded cursor-pointer">
+                                <input type="checkbox" class="payment-checkbox" value="paypal">
+                                <span>🌐 PayPal</span>
+                            </label>
+                            <label class="flex items-center gap-2 bg-gray-700 p-2 rounded cursor-pointer">
+                                <input type="checkbox" class="payment-checkbox" value="stripe">
+                                <span>💵 Stripe</span>
+                            </label>
+                            <label class="flex items-center gap-2 bg-gray-700 p-2 rounded cursor-pointer">
+                                <input type="checkbox" class="payment-checkbox" value="picpay">
+                                <span>📱 PicPay</span>
+                            </label>
+                            <label class="flex items-center gap-2 bg-gray-700 p-2 rounded cursor-pointer">
+                                <input type="checkbox" class="payment-checkbox" value="boleto">
+                                <span>🧾 Boleto</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button onclick="createProduct()" class="w-full mt-6 bg-yellow-500 text-black py-3 rounded-lg font-bold hover:bg-yellow-400 transition">➕ Criar Produto</button>
+                </div>
+
+                <div class="bg-gray-800 rounded-lg p-4">
+                    <h3 class="font-bold mb-2">Preview da Descrição:</h3>
+                    <div id="descriptionPreview" class="bg-gray-700 rounded p-4 bbcode-content text-sm">Digite uma descrição acima para ver o preview...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Details Modal -->
+    <div id="productModal" class="fixed inset-0 z-50 bg-black bg-opacity-70 overflow-y-auto hidden">
+        <div class="min-h-screen flex items-center justify-center p-4">
+            <div class="bg-gray-900 rounded-xl max-w-3xl w-full" onclick="event.stopPropagation()">
+                <div id="productModalContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50" onclick="toggleCart()">
+        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-gray-900 shadow-2xl p-6 overflow-y-auto" onclick="event.stopPropagation()">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold">Carrinho</h2>
+                <button onclick="toggleCart()" class="p-2 hover:bg-gray-800 rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="cartContent">
+                <div class="text-center py-12">
+                    <svg class="w-16 h-16 mx-auto mb-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    <p class="text-gray-400">Seu carrinho está vazio</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-70 flex items-center justify-center p-4">
+        <div class="bg-gray-900 rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold">Escolha o Método de Pagamento</h2>
+                    <button onclick="closePaymentModal()" class="p-2 hover:bg-gray-800 rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="paymentContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-12">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold mb-2">Mods em Destaque</h1>
+            <p class="text-gray-400">Os melhores mods para SA-MP da Lojinha do Bodinho</p>
+        </div>
+
+        <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4"></div>
+    </main>
+
+    <footer class="bg-gray-900 border-t border-gray-800 mt-20">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="https://i.postimg.cc/02kNzJr8/bode.png" alt="Lojinha do Bodinho" class="w-14 h-14 rounded-lg object-cover shadow-lg">
+                        <span class="text-xl font-medium logo-text">Lojinha do Bodinho</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">A melhor loja de mods para SA-MP. Conteúdo exclusivo e de qualidade.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Links Rápidos</h3>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-yellow-500">Categorias</a></li>
+                        <li><a href="#" class="hover:text-yellow-500">Novidades</a></li>
+                        <li><a href="#" class="hover:text-yellow-500">Mais Vendidos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Redes Sociais</h3>
+                    <div class="flex gap-3">
+                        <button class="w-10 h-10 bg-gray-800 hover:bg-yellow-500 hover:text-black rounded-lg flex items-center justify-center transition">💬</button>
+                        <button class="w-10 h-10 bg-gray-800 hover:bg-yellow-500 hover:text-black rounded-lg flex items-center justify-center transition">📱</button>
+                        <button class="w-10 h-10 bg-gray-800 hover:bg-yellow-500 hover:text-black rounded-lg flex items-center justify-center transition">🎮</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
+                <p>© 2025 Lojinha do Bodinho - Sistema com Login Admin e BBCode 🐐</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // Local Storage key for downloads
-        const STORAGE_KEY = 'lojinhaDownloads';
+        let isAdminLoggedIn = false;
 
-        // Initialize app
-        document.addEventListener('DOMContentLoaded', function() {
-            loadDownloads();
-            showSection('home');
-        });
+        const paymentMethods = {
+            pix: { name: 'PIX', icon: '🔑', description: 'Aprovação instantânea', color: 'bg-green-600' },
+            mercadopago: { name: 'Mercado Pago', icon: '💳', description: 'Cartão de crédito e débito', color: 'bg-blue-600' },
+            paypal: { name: 'PayPal', icon: '🌐', description: 'Pagamento internacional', color: 'bg-blue-500' },
+            stripe: { name: 'Stripe', icon: '💵', description: 'Cartão internacional', color: 'bg-purple-600' },
+            picpay: { name: 'PicPay', icon: '📱', description: 'Pagamento rápido', color: 'bg-green-500' },
+            boleto: { name: 'Boleto', icon: '🧾', description: 'Aprovação em 1-3 dias', color: 'bg-orange-600' }
+        };
 
-        // Navigation
-        function showSection(sectionId) {
-            document.querySelectorAll('section[id]').forEach(section => {
-                section.style.display = 'none';
+        // PRODUTOS BASE COM IMAGENS CORRIGIDAS
+        const baseProducts = [
+            {
+                id: 1,
+                name: "Mod Menu Esp",
+                category: "Geral",
+                price: 0,
+                image: "https://i.postimg.cc/gc3trjM6/Design-sem-nome.jpg",
+                rating: 4.8,
+                downloads: 57,
+                downloadLink: "https://www.mediafire.com/file/3vxvaizlrjn3imw/moonloader.rar/file",
+                description: "[b]Mod Menu Completo com ESP[/b]\n\Tecla X abre o Menu \n\n[color=red]ATENÇÃO:[/color] Use com responsabilidade!",
+                paymentMethods: ["pix", "mercadopago", "picpay"]
+            },
+            {
+                id: 2,
+                name: "Menu Sensifix Traduzido",
+                category: "Geral",
+                price: 0,
+                image: "https://i.postimg.cc/WbGtLqp6/sa-mp-093.png",
+                rating: 5,
+                downloads: 42,
+                downloadLink: "https://drive.google.com/uc?export=download&id=1sMUceNrS4hUhQ1iROjCXzJHp5dGQ4O8S",
+                description: "Menu Sensifix completamente traduzido para português\,Use /sensa para abri-lo",
+                paymentMethods: ["pix"]
+            },
+            {
+                id: 3,
+                name: "Menu Keyboard Traduzido",
+                category: "Geral",
+                price: 0,
+                image: "https://i.postimg.cc/1Xg6rmDq/sa-mp-091.png",
+                rating: 5,
+                downloads: 25,
+                downloadLink: "https://drive.google.com/uc?export=download&id=1h3Oi8AvDsmRkGQIImrwCoFXefPaMbLaG",
+                description: "Menu Keyboard totalmente em português\nUse /key ou /keyboard para abri-lo",
+                paymentMethods: ["pix"]
+            },
+            {
+                id: 4,
+                name: "Damage Informer Traduzido e Descompilado",
+                category: "Geral",
+                price: 0,
+                image: "https://i.postimg.cc/kMcXT3T1/sa-mp-086.png",
+                rating: 5,
+                downloads: 22,
+                downloadLink: "https://drive.google.com/uc?export=download&id=1H7rU840Peo_GXiJLKUQ2j8oan0Gas07W",
+                description: "Damage Informer traduzido e descompilado para edição\nUse /dmg para abri-lo",
+                paymentMethods: ["pix"]
+            }
+        ];
+
+        let products = [];
+        let cart = [];
+        let nextProductId = 5;
+        let editingProductId = null;
+
+        function initProducts() {
+            const saved = JSON.parse(localStorage.getItem('bodinho_products')) || [];
+            const merged = [...baseProducts];
+            
+            saved.forEach(savedProd => {
+                const baseIndex = merged.findIndex(p => p.id === savedProd.id);
+                if (baseIndex >= 0) {
+                    merged[baseIndex] = savedProd;
+                } else {
+                    merged.push(savedProd);
+                }
             });
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.style.display = 'block';
-                window.scrollTo(0, 0);
-            }
+            
+            products = merged;
+            nextProductId = Math.max(...products.map(p => p.id), 4) + 1;
         }
 
-        // Download Management
-        let editingId = null;
+        function saveProducts() {
+            localStorage.setItem('bodinho_products', JSON.stringify(products));
+        }
 
-        function handleSubmitDownload(event) {
-            event.preventDefault();
-
-            const formData = {
-                id: editingId || Date.now(),
-                productName: document.getElementById('productName').value,
-                productVersion: document.getElementById('productVersion').value,
-                downloadUrl: document.getElementById('downloadUrl').value,
-                fileSize: document.getElementById('fileSize').value,
-                description: document.getElementById('description').value,
-                releaseDate: document.getElementById('releaseDate').value,
-                category: document.getElementById('category').value,
-                requirements: document.getElementById('requirements').value,
-                createdAt: editingId ? getDownloadById(editingId).createdAt : new Date().toISOString()
-            };
-
-            let downloads = getDownloads();
-
-            if (editingId) {
-                downloads = downloads.map(d => d.id === editingId ? formData : d);
-                showMessage('Download atualizado com sucesso!', 'success');
+        function checkAdminAccess() {
+            if (isAdminLoggedIn) {
+                toggleAdminPanel();
             } else {
-                downloads.push(formData);
-                showMessage('Download adicionado com sucesso!', 'success');
+                openLoginModal();
             }
-
-            saveDownloads(downloads);
-            resetDownloadForm();
-            loadDownloads();
         }
 
-        function getDownloads() {
-            const data = localStorage.getItem(STORAGE_KEY);
-            return data ? JSON.parse(data) : [];
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.remove('hidden');
+            document.getElementById('loginUsername').value = '';
+            document.getElementById('loginPassword').value = '';
+            document.getElementById('loginError').classList.add('hidden');
         }
 
-        function saveDownloads(downloads) {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(downloads));
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.add('hidden');
         }
 
-        function getDownloadById(id) {
-            return getDownloads().find(d => d.id === id);
-        }
+        function attemptLogin() {
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            const errorDiv = document.getElementById('loginError');
 
-        function loadDownloads() {
-            const downloads = getDownloads();
-            const container = document.getElementById('downloadsContainer');
-
-            if (downloads.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: #999;">Nenhum download cadastrado ainda.</p>';
+            if (!username || !password) {
+                errorDiv.textContent = '⚠️ Preencha todos os campos!';
+                errorDiv.classList.remove('hidden');
                 return;
             }
 
-            container.innerHTML = downloads.map(download => `
-                <div class="download-item">
-                    <div class="download-item-info">
-                        <h4>${download.productName} (v${download.productVersion})</h4>
-                        <p>Tamanho: ${download.fileSize}</p>
-                        <p>Categoria: ${download.category || 'Não especificada'}</p>
-                        ${download.description ? `<p>Descrição: ${download.description}</p>` : ''}
+            if (username === 'Bode' && password === '19842508') {
+                isAdminLoggedIn = true;
+                closeLoginModal();
+                updateAdminUI();
+                renderProducts();
+                alert('✅ Login realizado com sucesso! Bem-vindo, Bode!');
+            } else {
+                errorDiv.textContent = '❌ Usuário ou senha incorretos!';
+                errorDiv.classList.remove('hidden');
+            }
+        }
+
+        function logout() {
+            if (confirm('🚪 Deseja realmente sair?')) {
+                isAdminLoggedIn = false;
+                updateAdminUI();
+                renderProducts();
+                alert('👋 Logout realizado com sucesso!');
+            }
+        }
+
+        function updateAdminUI() {
+            const logoutButton = document.getElementById('logoutButton');
+            if (isAdminLoggedIn) {
+                logoutButton.classList.remove('hidden');
+            } else {
+                logoutButton.classList.add('hidden');
+            }
+        }
+
+        function deleteProduct(productId) {
+            if (!isAdminLoggedIn) {
+                alert('⛔ Você precisa estar logado como admin!');
+                return;
+            }
+
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            if (confirm(`🗑️ Deseja realmente excluir "${product.name}"?`)) {
+                products = products.filter(p => p.id !== productId);
+                saveProducts();
+                renderProducts();
+                alert(`✅ Produto "${product.name}" excluído com sucesso!`);
+            }
+        }
+
+        function editProduct(productId) {
+            if (!isAdminLoggedIn) {
+                alert('⛔ Você precisa estar logado como admin!');
+                return;
+            }
+
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            editingProductId = productId;
+
+            document.getElementById('newProductName').value = product.name;
+            document.getElementById('newProductCategory').value = product.category;
+            document.getElementById('newProductPrice').value = product.price;
+            document.getElementById('newProductImage').value = product.image;
+            document.getElementById('newProductDownload').value = product.downloadLink;
+            document.getElementById('newProductRating').value = product.rating;
+            document.getElementById('newProductDescription').value = product.description || '';
+
+            document.querySelectorAll('.payment-checkbox').forEach(cb => {
+                cb.checked = product.paymentMethods.includes(cb.value);
+            });
+
+            const createBtn = document.querySelector('#adminPanel button[onclick="createProduct()"]');
+            createBtn.textContent = '✏️ Atualizar Produto';
+            createBtn.onclick = updateProduct;
+
+            let cancelBtn = document.getElementById('cancelEditBtn');
+            if (!cancelBtn) {
+                cancelBtn = document.createElement('button');
+                cancelBtn.id = 'cancelEditBtn';
+                cancelBtn.className = 'w-full mt-2 bg-gray-600 hover:bg-gray-500 text-white py-3 rounded-lg font-bold transition';
+                cancelBtn.textContent = '❌ Cancelar Edição';
+                cancelBtn.onclick = cancelEdit;
+                createBtn.parentNode.appendChild(cancelBtn);
+            }
+
+            toggleAdminPanel();
+        }
+
+        function updateProduct() {
+            if (!isAdminLoggedIn || !editingProductId) {
+                alert('⛔ Erro ao atualizar produto!');
+                return;
+            }
+
+            const name = document.getElementById('newProductName').value.trim();
+            const category = document.getElementById('newProductCategory').value.trim();
+            const price = parseFloat(document.getElementById('newProductPrice').value) || 0;
+            const image = document.getElementById('newProductImage').value.trim();
+            const downloadLink = document.getElementById('newProductDownload').value.trim();
+            const rating = parseFloat(document.getElementById('newProductRating').value) || 5;
+            const description = document.getElementById('newProductDescription').value.trim();
+            
+            const selectedMethods = Array.from(document.querySelectorAll('.payment-checkbox:checked'))
+                .map(cb => cb.value);
+
+            if (!name || !category || !image || !downloadLink) {
+                alert('⚠️ Preencha todos os campos obrigatórios!');
+                return;
+            }
+
+            const productIndex = products.findIndex(p => p.id === editingProductId);
+            if (productIndex === -1) return;
+
+            products[productIndex] = {
+                ...products[productIndex],
+                name,
+                category,
+                price,
+                image,
+                downloadLink,
+                rating,
+                description,
+                paymentMethods: selectedMethods.length > 0 ? selectedMethods : ['pix']
+            };
+
+            saveProducts();
+            renderProducts();
+            cancelEdit();
+            toggleAdminPanel();
+            
+            alert(`✅ Produto "${name}" atualizado com sucesso!`);
+        }
+
+        function cancelEdit() {
+            editingProductId = null;
+
+            document.getElementById('newProductName').value = '';
+            document.getElementById('newProductCategory').value = '';
+            document.getElementById('newProductPrice').value = '0';
+            document.getElementById('newProductImage').value = '';
+            document.getElementById('newProductDownload').value = '';
+            document.getElementById('newProductRating').value = '5';
+            document.getElementById('newProductDescription').value = '';
+            document.querySelectorAll('.payment-checkbox').forEach(cb => cb.checked = false);
+
+            const createBtn = document.querySelector('#adminPanel button[onclick="updateProduct()"]') || 
+                            document.querySelector('#adminPanel .bg-yellow-500');
+            if (createBtn) {
+                createBtn.textContent = '➕ Criar Produto';
+                createBtn.onclick = createProduct;
+            }
+
+            const cancelBtn = document.getElementById('cancelEditBtn');
+            if (cancelBtn) {
+                cancelBtn.remove();
+            }
+        }
+
+        function parseBBCode(text) {
+            if (!text) return '';
+            
+            let html = text;
+            html = html.replace(/\[b\](.*?)\[\/b\]/gi, '<b>$1</b>');
+            html = html.replace(/\[i\](.*?)\[\/i\]/gi, '<i>$1</i>');
+            html = html.replace(/\[u\](.*?)\[\/u\]/gi, '<u>$1</u>');
+            html = html.replace(/\[color=(.*?)\](.*?)\[\/color\]/gi, '<span style="color: $1">$2</span>');
+            html = html.replace(/\[size=(.*?)\](.*?)\[\/size\]/gi, '<span style="font-size: $1px">$2</span>');
+            html = html.replace(/\[url=(.*?)\](.*?)\[\/url\]/gi, '<a href="$1" target="_blank">$2</a>');
+            html = html.replace(/\[img\](.*?)\[\/img\]/gi, '<img src="$1" alt="Image">');
+            html = html.replace(/\n/g, '<br>');
+            
+            return html;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initProducts();
+            
+            const descInput = document.getElementById('newProductDescription');
+            if (descInput) {
+                descInput.addEventListener('input', (e) => {
+                    const preview = document.getElementById('descriptionPreview');
+                    if (preview) {
+                        preview.innerHTML = parseBBCode(e.target.value) || 'Digite uma descrição acima para ver o preview...';
+                    }
+                });
+            }
+            renderProducts();
+            updateCartUI();
+        });
+
+        function createProduct() {
+            if (!isAdminLoggedIn) {
+                alert('⛔ Você precisa estar logado como admin!');
+                return;
+            }
+
+            const name = document.getElementById('newProductName').value.trim();
+            const category = document.getElementById('newProductCategory').value.trim();
+            const price = parseFloat(document.getElementById('newProductPrice').value) || 0;
+            const image = document.getElementById('newProductImage').value.trim();
+            const downloadLink = document.getElementById('newProductDownload').value.trim();
+            const rating = parseFloat(document.getElementById('newProductRating').value) || 5;
+            const description = document.getElementById('newProductDescription').value.trim();
+            
+            const selectedMethods = Array.from(document.querySelectorAll('.payment-checkbox:checked'))
+                .map(cb => cb.value);
+
+            if (!name || !category || !image || !downloadLink) {
+                alert('⚠️ Preencha todos os campos obrigatórios!');
+                return;
+            }
+
+            const newProduct = {
+                id: nextProductId++,
+                name,
+                category,
+                price,
+                image,
+                rating,
+                downloads: 30,
+                downloadLink,
+                description,
+                paymentMethods: selectedMethods.length > 0 ? selectedMethods : ['pix']
+            };
+
+            products.push(newProduct);
+            saveProducts();
+            renderProducts();
+            toggleAdminPanel();
+            
+            document.getElementById('newProductName').value = '';
+            document.getElementById('newProductCategory').value = '';
+            document.getElementById('newProductPrice').value = '0';
+            document.getElementById('newProductImage').value = '';
+            document.getElementById('newProductDownload').value = '';
+            document.getElementById('newProductRating').value = '5';
+            document.getElementById('newProductDescription').value = '';
+            document.querySelectorAll('.payment-checkbox').forEach(cb => cb.checked = false);
+            
+            alert(`✅ Produto "${name}" criado com sucesso!`);
+        }
+
+        function toggleAdminPanel() {
+            document.getElementById('adminPanel').classList.toggle('hidden');
+        }
+
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('hidden');
+        }
+
+        function openProductDetails(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const modalContent = document.getElementById('productModalContent');
+            modalContent.innerHTML = `
+                <div class="relative">
+                    <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 p-2 bg-gray-800 hover:bg-gray-700 rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                    
+                    <img src="${product.image}" alt="${product.name}" class="w-full h-64 object-cover rounded-t-xl">
+                    
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <span class="text-xs text-gray-400 uppercase">${product.category}</span>
+                                <h2 class="text-2xl font-bold mt-1">${product.name}</h2>
+                            </div>
+                            <div class="flex items-center gap-1 bg-gray-800 px-3 py-1 rounded">
+                                <svg class="w-5 h-5 fill-yellow-500 text-yellow-500" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                <span class="font-bold">${product.rating}</span>
+                            </div>
+                        </div>
+
+                        ${product.description ? `
+                            <div class="bg-gray-800 rounded-lg p-4 mb-6">
+                                <h3 class="font-bold mb-2">📋 Descrição:</h3>
+                                <div class="bbcode-content text-sm text-gray-300">${parseBBCode(product.description)}</div>
+                            </div>
+                        ` : ''}
+
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <span class="text-2xl font-bold text-yellow-500">
+                                    ${product.price === 0 ? 'GRÁTIS' : `R$ ${product.price.toFixed(2)}`}
+                                </span>
+                                <p class="text-sm text-gray-400">${product.downloads} downloads</p>
+                            </div>
+                            ${product.price === 0 ? `
+                                <a href="${product.downloadLink}" target="_blank" class="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-lg font-bold transition">
+                                    📥 Download Grátis
+                                </a>
+                            ` : `
+                                <button onclick="addToCart(${product.id}); closeProductModal();" class="bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-3 rounded-lg font-bold transition">
+                                    🛒 Adicionar ao Carrinho
+                                </button>
+                            `}
+                        </div>
+
+                        ${product.paymentMethods && product.paymentMethods.length > 0 && product.price > 0 ? `
+                            <div class="bg-gray-800 rounded-lg p-4">
+                                <h3 class="font-bold mb-3 text-sm">💳 Métodos de Pagamento Aceitos:</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    ${product.paymentMethods.map(method => {
+                                        const pm = paymentMethods[method];
+                                        return `<span class="inline-flex items-center gap-1 bg-gray-700 px-3 py-1 rounded text-sm">${pm.icon} ${pm.name}</span>`;
+                                    }).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
                     </div>
-                    <div class="download-item-actions">
-                        <button class="btn btn-warning" onclick="editDownload(${download.id})">✏️ Editar</button>
-                        <button class="btn btn-success" onclick="downloadFile('${download.downloadUrl}')">⬇️ Download</button>
-                        <button class="btn btn-secondary" onclick="deleteDownload(${download.id})">🗑️ Deletar</button>
+                </div>
+            `;
+
+            document.getElementById('productModal').classList.remove('hidden');
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').classList.add('hidden');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product || product.price === 0) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                alert('❗ Este produto já está no carrinho!');
+                return;
+            }
+
+            cart.push({ ...product, quantity: 1 });
+            updateCartUI();
+            alert(`✅ ${product.name} adicionado ao carrinho!`);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartContent = document.getElementById('cartContent');
+            const cartBadge = document.getElementById('cartBadge');
+
+            if (cart.length === 0) {
+                cartBadge.classList.add('hidden');
+                cartContent.innerHTML = `
+                    <div class="text-center py-12">
+                        <svg class="w-16 h-16 mx-auto mb-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                        <p class="text-gray-400">Seu carrinho está vazio</p>
+                    </div>
+                `;
+                return;
+            }
+
+            cartBadge.textContent = cart.length;
+            cartBadge.classList.remove('hidden');
+            cartBadge.classList.add('flex');
+
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+            cartContent.innerHTML = `
+                <div class="space-y-4 mb-6">
+                    ${cart.map(item => `
+                        <div class="bg-gray-800 rounded-lg p-4 flex gap-4">
+                            <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover rounded">
+                            <div class="flex-1">
+                                <h3 class="font-bold mb-1">${item.name}</h3>
+                                <p class="text-yellow-500 font-bold">R$ ${item.price.toFixed(2)}</p>
+                            </div>
+                            <button onclick="removeFromCart(${item.id})" class="text-red-400 hover:text-red-300">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                </svg>
+                            </button>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="border-t border-gray-700 pt-4 mb-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-lg font-bold">Total:</span>
+                        <span class="text-2xl font-bold text-yellow-500">R$ ${total.toFixed(2)}</span>
+                    </div>
+                    <button onclick="openPaymentModal()" class="w-full bg-yellow-500 hover:bg-yellow-400 text-black py-3 rounded-lg font-bold transition">
+                        💳 Finalizar Compra
+                    </button>
+                </div>
+            `;
+        }
+
+        function openPaymentModal() {
+            if (cart.length === 0) return;
+
+            const allMethods = new Set();
+            cart.forEach(item => {
+                item.paymentMethods.forEach(method => allMethods.add(method));
+            });
+
+            const paymentContent = document.getElementById('paymentContent');
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+            paymentContent.innerHTML = `
+                <div class="space-y-4">
+                    <div class="bg-gray-800 rounded-lg p-4 mb-6">
+                        <h3 class="font-bold mb-2">📦 Resumo do Pedido</h3>
+                        <div class="space-y-2 text-sm">
+                            ${cart.map(item => `
+                                <div class="flex justify-between">
+                                    <span>${item.name}</span>
+                                    <span class="text-yellow-500">R$ ${item.price.toFixed(2)}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="border-t border-gray-700 mt-3 pt-3 flex justify-between font-bold">
+                            <span>Total:</span>
+                            <span class="text-yellow-500 text-xl">R$ ${total.toFixed(2)}</span>
+                        </div>
+                    </div>
+
+                    <h3 class="font-bold mb-3">Selecione o método de pagamento:</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        ${Array.from(allMethods).map(method => {
+                            const pm = paymentMethods[method];
+                            return `
+                                <button onclick="processPayment('${method}')" class="payment-method ${pm.color} hover:opacity-90 p-4 rounded-lg text-left transition">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <span class="text-2xl">${pm.icon}</span>
+                                        <span class="font-bold text-white">${pm.name}</span>
+                                    </div>
+                                    <p class="text-sm text-white opacity-80">${pm.description}</p>
+                                </button>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('paymentModal').classList.remove('hidden');
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').classList.add('hidden');
+        }
+
+        function processPayment(method) {
+            const pm = paymentMethods[method];
+            alert(`💳 Processando pagamento via ${pm.name}...\n\n🔄 Em um sistema real, você seria redirecionado para a página de pagamento.`);
+            
+            setTimeout(() => {
+                alert(`✅ Pagamento confirmado!\n\n📥 Os links de download foram enviados para seu email.`);
+                cart = [];
+                updateCartUI();
+                closePaymentModal();
+                toggleCart();
+            }, 1500);
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            
+            grid.innerHTML = products.map(product => `
+                <div class="bg-gray-900 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300 border border-gray-800 hover:border-yellow-500">
+                    <div class="relative">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
+                        <div class="absolute top-2 right-2 bg-gray-900 bg-opacity-90 px-2 py-1 rounded flex items-center gap-1">
+                            <svg class="w-4 h-4 fill-yellow-500 text-yellow-500" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <span class="text-sm font-bold">${product.rating}</span>
+                        </div>
+                        ${isAdminLoggedIn ? `
+                            <div class="absolute top-2 left-2 flex gap-2">
+                                <button onclick="editProduct(${product.id})" class="bg-blue-600 hover:bg-blue-500 text-white p-2 rounded-lg transition" title="Editar">
+                                    ✏️
+                                </button>
+                                <button onclick="deleteProduct(${product.id})" class="bg-red-600 hover:bg-red-500 text-white p-2 rounded-lg transition" title="Excluir">
+                                    🗑️
+                                </button>
+                            </div>
+                        ` : ''}
+                    </div>
+                    
+                    <div class="p-4">
+                        <span class="text-xs text-gray-400 uppercase">${product.category}</span>
+                        <h3 class="font-bold text-lg mt-1 mb-2">${product.name}</h3>
+                        
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-yellow-500 font-bold text-xl">
+                                ${product.price === 0 ? 'GRÁTIS' : `R$ ${product.price.toFixed(2)}`}
+                            </span>
+                            <span class="text-xs text-gray-400">📥 ${product.downloads}</span>
+                        </div>
+
+                        <div class="flex gap-2">
+                            <button onclick="openProductDetails(${product.id})" class="flex-1 bg-gray-800 hover:bg-gray-700 py-2 rounded-lg transition text-sm font-medium">
+                                Ver Detalhes
+                            </button>
+                            ${product.price === 0 ? `
+                                <a href="${product.downloadLink}" target="_blank" class="flex-1 bg-green-600 hover:bg-green-500 py-2 rounded-lg transition text-sm font-medium text-center">
+                                    📥 Baixar
+                                </a>
+                            ` : `
+                                <button onclick="addToCart(${product.id})" class="flex-1 bg-yellow-500 hover:bg-yellow-400 text-black py-2 rounded-lg transition text-sm font-bold">
+                                    🛒 Comprar
+                                </button>
+                            `}
+                        </div>
                     </div>
                 </div>
             `).join('');
-        }
-
-        function editDownload(id) {
-            const download = getDownloadById(id);
-            if (!download) return;
-
-            editingId = id;
-            document.getElementById('productName').value = download.productName;
-            document.getElementById('productVersion').value = download.productVersion;
-            document.getElementById('downloadUrl').value = download.downloadUrl;
-            document.getElementById('fileSize').value = download.fileSize;
-            document.getElementById('description').value = download.description || '';
-            document.getElementById('releaseDate').value = download.releaseDate || '';
-            document.getElementById('category').value = download.category || '';
-            document.getElementById('requirements').value = download.requirements || '';
-
-            document.querySelector('form button[type="submit"]').textContent = '✅ Atualizar Download';
-            window.scrollTo(0, 0);
-        }
-
-        function deleteDownload(id) {
-            if (confirm('Tem certeza que deseja deletar este download?')) {
-                const downloads = getDownloads().filter(d => d.id !== id);
-                saveDownloads(downloads);
-                loadDownloads();
-                showMessage('Download deletado com sucesso!', 'success');
-            }
-        }
-
-        function resetDownloadForm() {
-            document.getElementById('downloadForm').reset();
-            editingId = null;
-            document.querySelector('form button[type="submit"]').textContent = 'Salvar Download';
-        }
-
-        function downloadFile(url) {
-            try {
-                const link = document.createElement('a');
-                link.href = url;
-                link.download = url.split('/').pop() || 'download';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                showMessage('Download iniciado!', 'success');
-            } catch (error) {
-                showMessage('Erro ao iniciar o download.', 'error');
-            }
-        }
-
-        function showMessage(message, type) {
-            const successMsg = document.getElementById('successMessage');
-            const errorMsg = document.getElementById('errorMessage');
-
-            if (type === 'success') {
-                successMsg.textContent = message;
-                successMsg.style.display = 'block';
-                setTimeout(() => {
-                    successMsg.style.display = 'none';
-                }, 3000);
-            } else {
-                errorMsg.textContent = message;
-                errorMsg.style.display = 'block';
-                setTimeout(() => {
-                    errorMsg.style.display = 'none';
-                }, 3000);
-            }
-        }
-
-        function closeEditModal() {
-            document.getElementById('editModal').style.display = 'none';
-        }
-
-        function handleEditSubmit(event) {
-            event.preventDefault();
-            closeEditModal();
-        }
-
-        function handleContactSubmit(event) {
-            event.preventDefault();
-            showMessage('Obrigado por sua mensagem! Entraremos em contato em breve.', 'success');
-            event.target.reset();
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('editModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
         }
     </script>
 </body>
