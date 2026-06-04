@@ -1,0 +1,11 @@
+# junk / local
+music/xd
+images/worst website is fakecrime
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# secrets (deploy script — use locally only)
+enter.py
